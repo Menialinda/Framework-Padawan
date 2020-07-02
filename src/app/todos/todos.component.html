@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button  [routerLink]="['/albuns']">Galáxia Anterior</button>
+    </div>
+    <div class="col">
+      <button  [routerLink]="['/']">Galáxia Inicial</button>
+    </div>
+    <div class="col">
+      <div class="col search-bar ">
+        <form [formGroup]="searchForm">
+          <div class="form-group">
+              <input type="text" formControlName="seatchControl" class="form-control" placeholder="O que você esta procurando padawan?">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th scope="col">BeingsId</th>
+      <th scope="col">GalaxyId</th>
+      <th scope="col">GalaxyDescription</th>
+      <th scope="col">TasksCompleted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of api">
+      <td>{{todo.userId}}</td>
+      <td>{{todo.id}}</td>
+      <td>{{todo.title}}</td>
+      <td *ngIf="todo.completed" class="true">{{todo.completed}}</td>
+      <td *ngIf="!todo.completed">{{todo.completed}}</td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-4 search-bar ">
+      <form [formGroup]="searchForm">
+        <div class="form-group">
+            <input type="text" formControlName="seatchControl" class="form-control" placeholder="O que você esta procurando padawan?">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <button  [routerLink]="['/']">Galáxia Inicial</button>
+    </div>
+    <div class="col">
+      <button  [routerLink]="['/albuns']">Proxima Galáxia</button>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th scope="col">BeingsId</th>
+      <th scope="col">GalaxyId</th>
+      <th scope="col">GalaxyDescription</th>
+      <th scope="col">BeingsBodyDescription</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let posts of api">
+      <td>{{posts.userId}}</td>
+      <td>{{posts.id}}</td>
+      <td>{{posts.title}}</td>
+      <td>{{posts.body}}</td>
+    </tr>
+  </tbody>
+</table>
+
