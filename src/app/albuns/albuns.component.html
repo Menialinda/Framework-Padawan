@@ -1,18 +1,21 @@
-<div class="container text-center">
-  <div class="row">
-    <div class="col">
-      <button  [routerLink]="['/posts']">Galáxia Anterior</button>
+<div class="container text-center"> <!--Container para a navegação das paginas com texto centralizado-->
+  <h2>Bem-vindo a Galáxia dos Álbuns, aqui você podera verificar os álbuns
+     de varias criaturas de outras galáxias, quem sabe se a alguém da sua
+     galáxia não deixou um album aqui com uma foto sua?</h2>
+  <div class="row"> <!--Linha do container-->
+    <div class="col"> <!--Coluna do container-->
+      <button  [routerLink]="['/posts']">Galáxia Anterior</button> <!--Botão de rota de Navegação-->
     </div>
-    <div class="col">
-      <button  [routerLink]="['/']">Galáxia Inicial</button>
+    <div class="col"> <!--Coluna do container-->
+      <button  [routerLink]="['/']">Galáxia Inicial</button> <!--Botão de rota de Navegação-->
     </div>
-    <div class="col">
-      <button  [routerLink]="['/todos']">Proxima Galáxia</button>
+    <div class="col"> <!--Coluna do container-->
+      <button  [routerLink]="['/todos']">Proxima Galáxia</button> <!--Botão de rota de Navegação-->
     </div>
-    <div class="col-4">
+    <div class="col-4"> <!--Coluna do container com espaço 4-->
       <div class="col search-bar ">
-        <form [formGroup]="searchForm">
-          <div class="form-group">
+        <form [formGroup]="searchForm"><!--Formulario para colocar a barra de pesquisa-->
+          <div class="form-group">  <!--Com a atribuição acima para o grupo de formularios "searchForm" devemos colocar que esta div e do form-group para o angular identicar que ela pertence a um grupo-->
               <input type="text" formControlName="seatchControl" class="form-control" placeholder="O que você esta procurando padawan?">
           </div>
         </form>
@@ -20,19 +23,20 @@
     </div>
   </div>
 </div>
-<table class="table table-striped table-dark text-center ">
+<table class="table table-striped table-dark text-center">  <!--Cria uma tabela zebrada com o Boostrap com texto centralizado-->
   <thead>
-    <tr>
-      <th scope="col">BeingsId</th>
-      <th scope="col">GalaxyId</th>
-      <th scope="col">GalaxyName</th>
+    <tr><!--Linha da tabela-->
+      <th scope="col">AlbumId</th> <!--Celula do cabeçalho-->
+      <th scope="col">GalaxyId</th> <!--Celula do cabeçalho-->
+      <th scope="col">AlbumDescription</th> <!--Celula do cabeçalho-->
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let album of api">
-      <td>{{album.userId}}</td>
-      <td>{{album.id}}</td>
-      <td>{{album.title}}</td>
+    <tr *ngFor="let album of api"><!--NgFor para percorremos o que foi trazido do Json da nossa Api que foi embutido no nosso vetor-->
+      <!--Nos td abaixo, estamos pegando os valores retornados ao nosso vetor de acordo com os parametros da nossa interface -->
+      <td>{{album.userId}}</td> <!--Conteudo-->
+      <td>{{album.id}}</td> <!--Conteudo-->
+      <td>{{album.title}}</td> <!--Conteudo-->
     </tr>
   </tbody>
 </table>

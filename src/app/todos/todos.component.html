@@ -1,37 +1,41 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <button  [routerLink]="['/albuns']">Galáxia Anterior</button>
+<div class="container text-center"> <!--Container para a navegação das paginas com texto centralizado-->
+  <h2>Bem-vindo a Galáxia dos TODO's, aqui você podera verificar se a sua
+    tarefa de alguma galáxia foi concluida ou não, logo, verifique a sua situação o mais breve possível!</h2>
+  <div class="row"> <!--Linha do container-->
+    <div class="col"> <!--Coluna do container-->
+      <button  [routerLink]="['/albuns']">Galáxia Anterior</button> <!--Botão de rota de Navegação-->
     </div>
-    <div class="col">
-      <button  [routerLink]="['/']">Galáxia Inicial</button>
+    <div class="col"> <!--Coluna do container-->
+      <button  [routerLink]="['/']">Galáxia Inicial</button> <!--Botão de rota de Navegação-->
     </div>
-    <div class="col">
-      <div class="col search-bar ">
-        <form [formGroup]="searchForm">
-          <div class="form-group">
-              <input type="text" formControlName="seatchControl" class="form-control" placeholder="O que você esta procurando padawan?">
+    <div class="col"> <!--Coluna do container-->
+      <div class="col search-bar">
+        <form [formGroup]="searchForm"> <!--Formulario para colocar a barra de pesquisa-->
+          <div class="form-group"> <!--Com a atribuição acima para o grupo de formularios "searchForm" devemos colocar que esta div e do form-group para o angular identicar que ela pertence a um grupo-->
+              <input type="text" formControlName="seatchControl" class="form-control" placeholder="O que você esta procurando padawan?"> <!--Colocando a classe do formulando e identificando qual nom-->
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-<table class="table table-striped text-center">
-  <thead>
-    <tr>
-      <th scope="col">BeingsId</th>
-      <th scope="col">GalaxyId</th>
-      <th scope="col">GalaxyDescription</th>
-      <th scope="col">TasksCompleted</th>
+<table class="table table-striped table-dark text-center"> <!--Cria uma tabela zebrada com o Boostrap com texto centralizado-->
+  <thead> <!--Cabeçalho da tabela-->
+    <tr><!--Linha da tabela-->
+      <th scope="col">TaskId</th> <!--Celula do cabeçalho-->
+      <th scope="col">GalaxyId</th> <!--Celula do cabeçalho-->
+      <th scope="col">TaskDescription</th> <!--Celula do cabeçalho-->
+      <th scope="col">TasksCompleted?</th> <!--Celula do cabeçalho-->
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let todo of api">
-      <td>{{todo.userId}}</td>
-      <td>{{todo.id}}</td>
-      <td>{{todo.title}}</td>
-      <td *ngIf="todo.completed" class="true">{{todo.completed}}</td>
+  <tbody> <!--Corpo da Tabela-->
+    <tr *ngFor="let todo of api"><!--NgFor para percorremos o que foi trazido do Json da nossa Api que foi embutido no nosso vetor-->
+      <!--Nos td abaixo, estamos pegando os valores retornados ao nosso vetor de acordo com os parametros da nossa interface -->
+      <td>{{todo.userId}}</td> <!--Conteudo-->
+      <td>{{todo.id}}</td> <!--Conteudo-->
+      <td>{{todo.title}}</td> <!--Conteudo-->
+      <!--Usamos a diretiva ngIf para verificar se o atributo completed e true ou não e colocamos um icone-->
+      <td *ngIf="todo.completed" class="true">{{todo.completed}} <i class="fas fa-check"></i></td>
       <td *ngIf="!todo.completed">{{todo.completed}}</td>
     </tr>
   </tbody>
